@@ -17,24 +17,26 @@ import { schemaTypes } from "./schemaTypes";
 import { structure } from "./structure";
 import { createPageTemplate } from "./utils/helper";
 
-const projectId = process.env.SANITY_STUDIO_PROJECT_ID ?? "";
-const dataset = process.env.SANITY_STUDIO_DATASET;
-const title = process.env.SANITY_STUDIO_TITLE;
-const presentationOriginUrl = process.env.SANITY_STUDIO_PRESENTATION_URL;
+// Use fallback values for production
+const projectId = process.env.SANITY_STUDIO_PROJECT_ID || "5o2cah64";
+const dataset = process.env.SANITY_STUDIO_DATASET || "production";
+const title = process.env.SANITY_STUDIO_TITLE || "Turbo Studio";
+const presentationOriginUrl =
+  process.env.SANITY_STUDIO_PRESENTATION_URL || "http://localhost:3000";
 
 export default defineConfig({
   name: "default",
-  title: title ?? "Turbo Studio",
+  title: title,
   projectId: projectId,
   icon: Logo,
-  dataset: dataset ?? "production",
+  dataset: dataset,
   plugins: [
     presentationTool({
       resolve: {
         locations,
       },
       previewUrl: {
-        origin: presentationOriginUrl ?? "http://localhost:3000",
+        origin: presentationOriginUrl,
         previewMode: {
           enable: "/api/presentation-draft",
         },
