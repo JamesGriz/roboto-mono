@@ -11,13 +11,18 @@ export async function NavbarServer() {
 }
 
 export function Navbar({ navbarData }: { navbarData: QueryNavbarDataResult }) {
-  const { logo, siteTitle } = navbarData ?? {};
+  const { logoLight, logoDark, siteTitle } = navbarData ?? {};
 
   return (
     <section className="py-3 md:border-b">
       <div className="container mx-auto px-4 md:px-6">
         <nav className="grid grid-cols-[auto_1fr] items-center gap-4">
-          <Logo src={logo} alt={siteTitle} priority />
+          <Logo
+            srcLight={logoLight}
+            srcDark={logoDark}
+            alt={siteTitle}
+            priority
+          />
 
           <NavbarClient navbarData={navbarData} />
         </nav>

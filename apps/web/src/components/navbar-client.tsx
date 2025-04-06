@@ -106,7 +106,7 @@ function MobileNavbarAccordionColumn({
 }
 
 function MobileNavbar({ navbarData }: { navbarData: QueryNavbarDataResult }) {
-  const { logo, siteTitle, columns, buttons } = navbarData ?? {};
+  const { logoLight, logoDark, siteTitle, columns, buttons } = navbarData ?? {};
   const [isOpen, setIsOpen] = useState(false);
 
   const path = usePathname();
@@ -128,7 +128,12 @@ function MobileNavbar({ navbarData }: { navbarData: QueryNavbarDataResult }) {
       <SheetContent className="overflow-y-auto">
         <SheetHeader>
           <SheetTitle>
-            <Logo src={logo} alt={siteTitle} priority />
+            <Logo
+              srcLight={logoLight}
+              srcDark={logoDark}
+              alt={siteTitle}
+              priority
+            />
           </SheetTitle>
         </SheetHeader>
 
