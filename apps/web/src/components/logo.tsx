@@ -27,30 +27,32 @@ export function Logo({
 }: LogoProps) {
   return (
     <Link href="/" className="">
-      {image ? (
-        <SanityImage
-          asset={image}
-          alt={alt ?? "logo"}
-          width={width}
-          className="w-[170px] h-[40px] dark:invert"
-          height={height}
-          priority={priority}
-          loading="eager"
-          decoding="sync"
-          quality={100}
-        />
-      ) : (
-        <Image
-          src={src ?? LOGO_URL}
-          alt={alt ?? "logo"}
-          width={width}
-          className="w-[170px] h-[40px] dark:invert"
-          height={height}
-          loading="eager"
-          priority={priority}
-          decoding="sync"
-        />
-      )}
+      <div className={` overflow-hidden`}>
+        {image ? (
+          <SanityImage
+            asset={image}
+            alt={alt ?? "logo"}
+            width={width}
+            className="w-full h-full object-contain dark:invert"
+            height={height}
+            priority={priority}
+            loading="eager"
+            decoding="sync"
+            quality={100}
+          />
+        ) : (
+          <Image
+            src={src ?? LOGO_URL}
+            alt={alt ?? "logo"}
+            width={width}
+            className="w-full h-full object-contain dark:invert"
+            height={height}
+            loading="eager"
+            priority={priority}
+            decoding="sync"
+          />
+        )}
+      </div>
     </Link>
   );
 }
