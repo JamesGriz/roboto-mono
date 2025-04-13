@@ -263,7 +263,7 @@ export function DesktopNavbar({
       </NavigationMenu>
 
       <div className="justify-self-end flex items-center gap-4">
-        <ModeToggle />
+        {/* <ModeToggle /> */}
         <SanityButtons
           buttons={buttons ?? []}
           className="flex items-center gap-4"
