@@ -36,7 +36,7 @@ export default async function RootLayout({
   preconnect("https://cdn.sanity.io");
   prefetchDNS("https://cdn.sanity.io");
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="dark">
       <body
         className={`${fontGeist.variable} ${fontMono.variable} font-geist antialiased`}
       >

@@ -273,7 +273,8 @@ export const queryFooterData = defineQuery(/* groq */ `
         ),
       }
     },
-    "logo": *[_type == "settings"][0].logo.asset->url + "?w=80&h=40&dpr=3&fit=max",
+    "logoLight": *[_type == "settings"][0].logoLight.asset->url + "?w=80&h=40&dpr=3&fit=max",
+    "logoDark": *[_type == "settings"][0].logoDark.asset->url + "?w=80&h=40&dpr=3&fit=max",
     "siteTitle": *[_type == "settings"][0].siteTitle,
     "socialLinks": *[_type == "settings"][0].socialLinks,
   }
