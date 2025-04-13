@@ -1,9 +1,8 @@
+import type { SanityButtonProps } from "@/types";
 import { Button } from "@workspace/ui/components/button";
 import { cn } from "@workspace/ui/lib/utils";
-import Link from "next/link";
 import type { ComponentProps } from "react";
-
-import type { SanityButtonProps } from "@/types";
+import { SanityLink } from "./sanity-link";
 
 type SanityButtonsProps = {
   buttons: SanityButtonProps[] | null;
@@ -14,14 +13,13 @@ type SanityButtonsProps = {
 
 function SanityButton({
   text,
-  href,
+  link,
   variant = "default",
-  openInNewTab,
   className,
   ...props
 }: SanityButtonProps & ComponentProps<typeof Button>) {
-  if (!href) {
-    console.log("Link Broken", { text, href, variant, openInNewTab });
+  if (!link) {
+    console.log("Link Broken", { text, link, variant });
     return <Button>Link Broken</Button>;
   }
 
@@ -32,14 +30,7 @@ function SanityButton({
       asChild
       className={cn("rounded-[10px]", className)}
     >
-      <Link
-        href={href || "#"}
-        target={openInNewTab ? "_blank" : "_self"}
-        aria-label={`Navigate to ${text}`}
-        title={`Click to visit ${text}`}
-      >
-        {text}
-      </Link>
+      <SanityLink link={link}>{text}</SanityLink>
     </Button>
   );
 }

@@ -25,9 +25,9 @@ export const button = defineType({
       type: "string",
     }),
     defineField({
-      name: "url",
-      title: "Url",
-      type: "customUrl",
+      name: "link",
+      title: "Link",
+      type: "link",
     }),
   ],
   preview: {

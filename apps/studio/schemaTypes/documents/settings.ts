@@ -72,19 +72,10 @@ export const settings = defineType({
       validation: (rule) => rule.required().min(50).max(160),
     }),
     defineField({
-      name: "logoLight",
+      name: "logo",
       type: "image",
-      title: "Site Logo (Light Mode)",
-      description: "Upload your website logo for light mode",
-      options: {
-        hotspot: true,
-      },
-    }),
-    defineField({
-      name: "logoDark",
-      type: "image",
-      title: "Site Logo (Dark Mode)",
-      description: "Upload your website logo for dark mode",
+      title: "Site Logo",
+      description: "Upload your website logo",
       options: {
         hotspot: true,
       },

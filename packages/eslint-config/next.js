@@ -57,6 +57,7 @@ export const nextJsConfig = [
       "react/react-in-jsx-scope": "off",
       "@typescript-eslint/consistent-type-imports": "error",
       "react/prop-types": "off",
+      "simple-import-sort/imports": "off",
     },
   },
 ];

@@ -130,8 +130,7 @@ export function FooterSkeleton() {
 }
 
 function Footer({ data }: FooterProps) {
-  const { subtitle, columns, socialLinks, logoLight, logoDark, siteTitle } =
-    data;
+  const { subtitle, columns, socialLinks, logo, siteTitle } = data;
   const year = new Date().getFullYear();
 
   return (
@@ -142,12 +141,7 @@ function Footer({ data }: FooterProps) {
             <div className="flex w-full max-w-96 shrink flex-col items-center justify-between gap-6 md:gap-8 lg:items-start">
               <div>
                 <span className="flex items-center justify-center gap-4 lg:justify-start">
-                  <Logo
-                    srcLight={logoLight}
-                    srcDark={logoDark}
-                    alt={siteTitle}
-                    priority
-                  />
+                  <Logo src={logo} alt={siteTitle} priority />
                 </span>
                 {subtitle && (
                   <p className="mt-6 text-sm text-muted-foreground dark:text-zinc-400">

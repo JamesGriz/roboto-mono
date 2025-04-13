@@ -51,6 +51,7 @@ const blogCardFragment = /* groq */ `
   description,
   "slug":slug.current,
   richText,
+  orderRank,
   ${imageFragment},
   publishedAt,
   ${blogAuthorFragment}
@@ -62,12 +63,11 @@ const buttonsFragment = /* groq */ `
     variant,
     _key,
     _type,
-    "openInNewTab": url.openInNewTab,
-    "href": select(
-      url.type == "internal" => url.internal->slug.current,
-      url.type == "external" => url.external,
-      url.href
-    ),
+    link {
+      ...,
+      "type": coalesce(type, "defaultType"),
+      internalLink->{_type,slug,title}
+    },
   }
 `;
 
@@ -189,12 +189,7 @@ export const queryBlogIndexPageData = defineQuery(/* groq */ `
     description,
     ${pageBuilderFragment},
     "slug": slug.current,
-    "featuredBlog": featured[0]->{
-      ${blogCardFragment}
-    }
-  }{
-    ...@,
-    "blogs": *[_type == "blog" && (_id != ^.featuredBlog._id) && (seoHideFromLists != true)]{
+    "blogs": *[_type == "blog" && (seoHideFromLists != true)] | order(orderRank asc){
       ${blogCardFragment}
     }
   }
@@ -278,8 +273,7 @@ export const queryFooterData = defineQuery(/* groq */ `
         ),
       }
     },
-    "logoLight": *[_type == "settings"][0].logoLight.asset->url + "?w=80&h=40&dpr=3&fit=max",
-    "logoDark": *[_type == "settings"][0].logoDark.asset->url + "?w=80&h=40&dpr=3&fit=max",
+    "logo": *[_type == "settings"][0].logo.asset->url + "?w=80&h=40&dpr=3&fit=max",
     "siteTitle": *[_type == "settings"][0].siteTitle,
     "socialLinks": *[_type == "settings"][0].socialLinks,
   }
